@@ -1,10 +1,14 @@
 .wallet-wrapper {
+  flex: 0 0 270px;
+  width: 270px;
+  background: #121c39;
+  border-radius: 2px;
+
   .percent {
-    background-color: red;
-    width: 269px;
-    height: 165px;
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
 
     .flex-tool {
       display: flex;

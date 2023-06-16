@@ -1,0 +1,74 @@
+.home {
+  height: 100vh;
+
+  .home_wrapper {
+    display: flex;
+    height: 100%;
+  }
+
+  .home_content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    .home_hero_content {
+      padding: 0 30px 30px;
+      flex: 1;
+      height: 100%;
+      overflow-y: auto;
+
+      .hero_grid {
+        height: 100%;
+        display: grid;
+        grid-template-columns: auto 320px;
+        gap: 20px;
+
+        .grid_child_1 {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 20px;
+          height: fit-content;
+
+          .grid_subchild_1 {
+            display: grid;
+            grid-template-columns: 270px auto;
+            gap: 20px;
+
+            .flex_between {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+            }
+
+            .grid_subchild_child_1 {
+              display: flex;
+              flex-direction: column;
+              gap: 20px;
+
+              .wallet {
+                height: 100px;
+                display: flex;
+                gap: 20px;
+
+                &_card {
+                  width: 25%;
+                  background: #1c2241;
+                  border-radius: 2px;
+                }
+              }
+
+              .stats {
+                flex: 1;
+                display: flex;
+                gap: 20px;
+              }
+            }
+          }
+
+          .grid_subchild_2 {
+          }
+        }
+      }
+    }
+  }
+}

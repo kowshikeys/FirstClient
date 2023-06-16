@@ -12,29 +12,23 @@ import Shape8 from "../../assets/Icons/Combined Shape7.svg";
 
 const Header: React.FC = () => {
   return (
-    <div>
-      <div className="mx">
-        <div className="header-wrapper">
-          <div className="dashboard-logo">
-            <img src={DashboardLogo} alt="" />
-          </div>
-          <div className="section">
-            <img src={Shape1} alt="" />
-            <img src={Shape2} alt="" />
-            <img src={Shape3} alt="" />
-            <img src={Shape4} alt="" />
-            <img src={Shape5} alt="" />
-            <img src={Shape6} alt="" />
-          </div>
-          <div className="setting-panel">
-            <img src={Shape7} alt="" />
-            <img
-              style={{ width: "40px", height: "40px" }}
-              src={Shape8}
-              alt=""
-            />
-          </div>
-        </div>
+    <div className="header-wrapper">
+      <div className="dashboard-logo">
+        <img src={DashboardLogo} alt="" />
+      </div>
+      <div className="section">
+        <img src={Shape1} alt="" />
+        <img src={Shape2} alt="" />
+        <img src={Shape3} alt="" />
+        <img src={Shape4} alt="" />
+        <img src={Shape5} alt="" />
+        <img src={Shape6} alt="" />
+      </div>
+      <div className="setting-panel">
+        <img style={{ width: "40px", height: "40px" }} src={Shape7} alt="" />
+      </div>
+      <div className="setting-panel">
+        <img style={{ width: "40px", height: "40px" }} src={Shape8} alt="" />
       </div>
     </div>
   );

@@ -1,7 +1,10 @@
 .header-wrapper {
+  flex: 0 0 90px;
   width: 90px;
-  height: 100vh;
-  // background-color: grey;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
   .dashboard-logo {
     display: flex;
     justify-content: center;
