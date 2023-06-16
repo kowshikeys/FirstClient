@@ -1,0 +1,44 @@
+.header-wrapper {
+  width: 90px;
+  height: 100vh;
+  // background-color: grey;
+  .dashboard-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 23px;
+    img {
+      width: 43px;
+      height: 43px;
+    }
+  }
+  .section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    padding-top: 100px;
+    img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  .setting-panel {
+    // background-color: red;
+
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    // gap: 50px;
+    padding-top: 100px;
+    padding-bottom: 39px;
+    height: 200px;
+
+    img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}

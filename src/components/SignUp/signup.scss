@@ -1,0 +1,93 @@
+.login-wrapper {
+  width: 100%;
+  .logo {
+    img {
+      width: 175px;
+      height: 40px;
+      padding: 55px 0px 0px 180px;
+    }
+  }
+  .login {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    .login-title {
+      margin-top: 120px;
+      font-size: 40px;
+      font-weight: 300;
+      padding-bottom: 20px;
+      color: #8c68cd;
+    }
+    .login-inputs {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      input {
+        padding: 10px 0px 10px 20px;
+        width: 450px;
+        height: 35px;
+        border-radius: 5px;
+        border: none;
+        outline: none;
+        background: none;
+        background-color: white;
+        font-size: 12px;
+      }
+      button {
+        width: 219px;
+        height: 56px;
+        border-radius: 5px;
+        border: none;
+        background-color: #8c68cd;
+        color: white;
+        cursor: pointer;
+      }
+      .login-container {
+        display: flex;
+        gap: 21px;
+        .name-container {
+          width: 163px;
+        }
+        .email-container {
+          width: 245px;
+        }
+      }
+    }
+    .signup-text {
+      display: flex;
+      padding-top: 30px;
+      p {
+        font-size: 13px;
+        cursor: pointer;
+        color: #6c6c6b;
+      }
+    }
+    .login-qouts {
+      h2 {
+        font-size: 38px;
+        font-weight: 300;
+        color: #8c68cd;
+        padding-top: 10px;
+      }
+
+      p {
+        font-size: 18px;
+        display: flex;
+        justify-content: flex-end;
+        color: #a796c6;
+      }
+    }
+  }
+  .social-media {
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 100px;
+    padding-top: 150px;
+    gap: 20px;
+    p {
+      font-size: 14px;
+      color: #a796c6;
+    }
+  }
+}

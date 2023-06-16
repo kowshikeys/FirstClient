@@ -1,0 +1,24 @@
+.wallet-wrapper {
+  .percent {
+    background-color: red;
+    width: 269px;
+    height: 165px;
+    display: flex;
+    flex-direction: column;
+
+    .flex-tool {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+
+      h1 {
+        font-size: 17px;
+        font-weight: 400;
+      }
+      p {
+        color: #606166;
+        font-size: 12px;
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+.chat-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  .btc {
+    width: 653px;
+    height: 313px;
+  }
+  .market {
+    width: 234px;
+    height: 313px;
+  }
+}
