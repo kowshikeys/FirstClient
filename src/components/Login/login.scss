@@ -1,10 +1,15 @@
 .login-wrapper {
   width: 100%;
+
+  .mx {
+    height: 100vh;
+  }
+
   .logo {
+    padding: 70px 0 0 200px;
     img {
       width: 175px;
       height: 40px;
-      padding: 55px 0px 0px 180px;
     }
   }
   .login {

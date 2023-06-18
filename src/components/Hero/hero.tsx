@@ -26,7 +26,7 @@ const Hero: React.FC = () => {
           </div>
         </div>
         <div className="user">
-          <p>Elon Mask</p>
+          <p>Apple</p>
           <div className="user-box">
             <img src={User} alt="" />
           </div>

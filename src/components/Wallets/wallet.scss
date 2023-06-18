@@ -1,0 +1,20 @@
+.wallet_card {
+  .wallet_card_header {
+    padding: 5px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    // .width {
+    //   width: 40px;
+    //   height: 40px;
+    // }
+    p {
+      color: #8c68cd;
+    }
+    img {
+      background-color: #3a3c43;
+      padding: 10px;
+    }
+  }
+}

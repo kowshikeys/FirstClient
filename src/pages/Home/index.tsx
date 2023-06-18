@@ -22,8 +22,28 @@ const Home = () => {
               <Overview />
               <div className="grid_subchild_child_1">
                 <div className="flex_between">
-                  <p>My Wallets</p>
-                  <button className="add_wallet">Add Wallet</button>
+                  <p
+                    style={{
+                      color: "white",
+                      fontSize: "17px",
+                      fontWeight: "500",
+                    }}
+                  >
+                    My Wallets
+                  </p>
+                  <button
+                    style={{
+                      background: "none",
+                      outline: "none",
+                      border: "none",
+                      color: "#8C68CD",
+                      fontSize: "13px",
+                      fontWeight: "500",
+                    }}
+                    className="add_wallet"
+                  >
+                    Add Wallet
+                  </button>
                 </div>
                 <Wallets />
                 <div className="stats">

@@ -14,7 +14,7 @@
     flex: 1;
 
     .transaction-box {
-      padding-bottom: 5px;
+      padding-bottom: 15px;
       .trans-title {
         display: flex;
         justify-content: space-between;
@@ -36,9 +36,10 @@
       }
     }
     .coming-soon {
-      padding: 1px 5px 1px 5px;
+      padding: 15px;
       background-color: #1c2241;
       border-radius: 4px;
+      line-height: 20px;
 
       p {
         font-size: 12px;
@@ -46,23 +47,23 @@
     }
   }
   .news {
-    // display: flex;
-    // justify-content: center;
-    // flex-direction: column;
-    // align-items: flex-start;
-    gap: 0px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
     background-color: #1c2241;
-    padding: 0px 10px 0px 10px;
+    padding: 12px 10px 5px 12px;
     border-radius: 4px;
-    // line-height: 15px;
+    line-height: 14px;
 
     h5 {
-      font-size: 18px;
+      font-size: 13px;
       font-weight: 500;
       color: white;
     }
     p {
-      font-size: 13px;
+      font-size: 11px;
       color: white;
     }
   }

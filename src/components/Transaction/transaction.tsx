@@ -10,8 +10,8 @@ const Transaction = () => {
             <p>Transactions</p>
             <div className="trans-list">
               <p>ALL</p>
-              <p>SENT</p>
-              <p>RECENT</p>
+              <p style={{ color: "#42434B" }}>SENT</p>
+              <p style={{ color: "#42434B" }}>RECENT</p>
             </div>
           </div>
         </div>
@@ -22,7 +22,9 @@ const Transaction = () => {
       </div>
       <div className="news">
         <h5>News</h5>
-        <p>ValueCash Announces ICO to Reform E-Commerce With Its PoT Protocol</p>
+        <p>
+          ValueCash Announces ICO to Reform E-Commerce With Its PoT Protocol
+        </p>
         <p style={{ color: "#42434B" }}>
           16:23, 12 May <br />
           2023

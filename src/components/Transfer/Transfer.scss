@@ -2,4 +2,87 @@
   flex: 1;
   background: #121c39;
   border-radius: 2px;
+
+  .transfer-wrapper {
+    padding: 10px;
+
+    .amount {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      p {
+        font-size: 14px;
+        font-weight: 600;
+        color: white;
+      }
+
+      .walet {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+
+        .arrow {
+          background-color: #1c2241;
+          padding: 5px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 10px;
+        }
+      }
+      .amount-box {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+
+        .box {
+          background-color: #1c2241;
+          padding: 8px;
+        }
+      }
+    }
+
+    .send {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 20px;
+
+      p {
+        font-size: 13px;
+        font-weight: 600;
+        color: white;
+      }
+
+      h6 {
+        font-size: 15px;
+        font-weight: 300;
+        color: #42434b;
+      }
+      .box {
+        background-color: #1c2241;
+        padding: 8px;
+      }
+    }
+    .receive {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 20px;
+      p {
+        color: #606166;
+        font-weight: 500;
+      }
+
+      button {
+        border-radius: 15px;
+        border: 2px solid #8c68cd;
+        padding: 5px 10px 5px 10px;
+        background: none;
+        color: white;
+      }
+    }
+  }
 }

@@ -25,7 +25,7 @@ const Header: React.FC = () => {
         <img src={Shape6} alt="" />
       </div>
       <div className="setting-panel">
-        <img style={{ width: "40px", height: "40px" }} src={Shape7} alt="" />
+        <img style={{ width: "20px", height: "20px" }} src={Shape7} alt="" />
       </div>
       <div className="setting-panel">
         <img style={{ width: "40px", height: "40px" }} src={Shape8} alt="" />
