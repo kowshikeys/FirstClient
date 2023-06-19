@@ -47,6 +47,12 @@
         background-color: #8c68cd;
         color: white;
         cursor: pointer;
+        transition: all 200ms linear;
+
+        &:disabled {
+          cursor: no-drop;
+          opacity: 0.7;
+        }
       }
     }
     .signup-text {

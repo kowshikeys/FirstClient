@@ -4,8 +4,11 @@ import Search from "../../assets/Icons/search.svg";
 import Support from "../../assets/Icons/support.svg";
 import Plus from "../../assets/Icons/plus.svg";
 import User from "../../assets/Icons/user.svg";
+import { userStore } from "../../store/userStore";
 
 const Hero: React.FC = () => {
+  const user = userStore((state) => state.user);
+
   return (
     <div className="hero-wrapper">
       <div className="side-bar-one">
@@ -26,7 +29,7 @@ const Hero: React.FC = () => {
           </div>
         </div>
         <div className="user">
-          <p>Apple</p>
+          <p>{user?.displayName}</p>
           <div className="user-box">
             <img src={User} alt="" />
           </div>

@@ -49,11 +49,17 @@
                 height: 100px;
                 display: flex;
                 gap: 20px;
+                transition: all 200ms linear;
 
                 &_card {
-                  width: 25%;
                   background: #1c2241;
                   border-radius: 2px;
+                  flex: 1 0 auto;
+                  transition: all 200ms linear;
+
+                  // &:hover {
+                  //   width: 33.3%;
+                  // }
                 }
               }
 
@@ -65,8 +71,8 @@
             }
           }
 
-          .grid_subchild_2 {
-          }
+          // .grid_subchild_2 {
+          // }
         }
       }
     }

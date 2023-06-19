@@ -1,23 +1,72 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./signup.scss";
 import Logo from "../../assets/Icons/logo.png";
-import { Link } from "react-router-dom";
-import { Formik, Field, Form, ErrorMessage } from "formik";
+import { Link, useNavigate } from "react-router-dom";
+import { Formik, Field, Form, ErrorMessage, FormikHelpers } from "formik";
 import * as Yup from "yup";
+import {
+  AuthErrorCodes,
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  updateProfile,
+} from "firebase/auth";
+import { auth } from "../../utils/firebase";
+import { FirebaseError } from "firebase/app";
+import { userStore } from "../../store/userStore";
+
+const initialState = { name: "", email: "", password: "" };
 
 const SignUp: React.FC = () => {
+  const navigate = useNavigate();
+  const updateUser = userStore((state) => state.updateUser);
+  const updateFetching = userStore((state) => state.updateFetching);
+
+  useEffect(() => {
+    return onAuthStateChanged(auth, (data) => {
+      if (data) {
+        updateUser(data);
+        setTimeout(() => {
+          updateFetching(false);
+          navigate("/");
+        }, 0);
+      } else {
+        setTimeout(() => {
+          updateFetching(false);
+        }, 0);
+      }
+    });
+
+    //eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const validationSchema = Yup.object().shape({
     name: Yup.string().required("Name is required"),
     email: Yup.string()
       .email("Invalid email")
-      .test("at-symbol", 'Email must contain "@"', (value) =>
-        value?.includes("@")
-      )
+      .test("at-symbol", 'Email must contain "@"', (value) => value?.includes("@"))
       .required("Email is required"),
     password: Yup.string()
       .min(6, "Password must be at least 6 characters")
       .required("Password is required"),
   });
+
+  const handleSubmit = async (
+    values: typeof initialState,
+    actions: FormikHelpers<typeof initialState>
+  ) => {
+    try {
+      const { user } = await createUserWithEmailAndPassword(auth, values.email, values.password);
+      await updateProfile(user, { displayName: values.name });
+    } catch (error) {
+      if (error instanceof FirebaseError) {
+        if (error.code === AuthErrorCodes.EMAIL_EXISTS) {
+          alert("email is already exits");
+        }
+      }
+    } finally {
+      actions.setSubmitting(false);
+    }
+  };
   return (
     <div className="login-wrapper">
       <div className="mx">
@@ -28,11 +77,11 @@ const SignUp: React.FC = () => {
           <div className="login-fields">
             <h1 className="login-title">Log In NeoWallet</h1>
             <Formik
-              initialValues={{ name: "", email: "", password: "" }}
-              onSubmit={(Value) => console.log(Value)}
+              initialValues={initialState}
+              onSubmit={handleSubmit}
               validationSchema={validationSchema}
             >
-              {() => (
+              {({ isSubmitting }) => (
                 <Form>
                   <div className="login-inputs">
                     <div className="login-container">
@@ -43,11 +92,7 @@ const SignUp: React.FC = () => {
                           placeholder=" NAME"
                           name="name"
                         />
-                        <ErrorMessage
-                          name="name"
-                          component="div"
-                          className="errorMessage"
-                        />
+                        <ErrorMessage name="name" component="div" className="errorMessage" />
                       </div>
                       <div>
                         <Field
@@ -56,27 +101,17 @@ const SignUp: React.FC = () => {
                           name="email"
                           placeholder=" EMAIL"
                         />
-                        <ErrorMessage
-                          name="email"
-                          component="div"
-                          className="errorMessage"
-                        />
+                        <ErrorMessage name="email" component="div" className="errorMessage" />
                       </div>
                     </div>
                     <div>
-                      <Field
-                        type="password"
-                        placeholder="CHOOSE A PASSWORD"
-                        name="password"
-                      />
-                      <ErrorMessage
-                        name="password"
-                        component="div"
-                        className="errorMessage"
-                      />
+                      <Field type="password" placeholder="CHOOSE A PASSWORD" name="password" />
+                      <ErrorMessage name="password" component="div" className="errorMessage" />
                     </div>
 
-                    <button type="submit">CREATE ACCOUNT</button>
+                    <button type="submit" disabled={isSubmitting}>
+                      CREATE ACCOUNT
+                    </button>
                   </div>
                 </Form>
               )}

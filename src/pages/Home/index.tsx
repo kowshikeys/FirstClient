@@ -3,7 +3,6 @@ import React from "react";
 import "./Home.scss";
 import Hero from "../../components/Hero/hero";
 import Chat from "../../components/Chart/chat";
-import SignUp from "../../components/SignUp/signup";
 import Header from "../../components/Header/header";
 import Overview from "../../components/Overview/overview";
 import MyWallet from "../../components/MyWallet/myWallet";

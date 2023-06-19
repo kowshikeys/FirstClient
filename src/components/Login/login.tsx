@@ -1,22 +1,70 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./login.scss";
 import Logo from "../../assets/Icons/logo.png";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field, ErrorMessage, FormikHelpers } from "formik";
 import * as Yup from "yup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthErrorCodes, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../utils/firebase";
+import { FirebaseError } from "firebase/app";
+import { userStore } from "../../store/userStore";
+
+const initialState = { email: "", password: "" };
 
 const Login: React.FC = () => {
+  const navigate = useNavigate();
+  const updateUser = userStore((state) => state.updateUser);
+  const updateFetching = userStore((state) => state.updateFetching);
+
+  useEffect(() => {
+    return onAuthStateChanged(auth, (data) => {
+      if (data) {
+        updateUser(data);
+        setTimeout(() => {
+          updateFetching(false);
+          navigate("/");
+        }, 0);
+      } else {
+        setTimeout(() => {
+          updateFetching(false);
+        }, 0);
+      }
+    });
+
+    //eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const validationSchema = Yup.object().shape({
     email: Yup.string()
       .email("Invalid email")
-      .test("at-symbol", 'Email must contain "@"', (value) =>
-        value?.includes("@")
-      )
+      .test("at-symbol", 'Email must contain "@"', (value) => value?.includes("@"))
       .required("Email is required"),
     password: Yup.string()
       .min(6, "Password must be at least 6 characters")
       .required("Password is required"),
   });
+
+  const handleSubmit = async (
+    values: typeof initialState,
+    actions: FormikHelpers<typeof initialState>
+  ) => {
+    try {
+      console.log(values);
+      await signInWithEmailAndPassword(auth, values.email, values.password);
+    } catch (error) {
+      console.log(error);
+      if (error instanceof FirebaseError) {
+        if (error.code === AuthErrorCodes.USER_DELETED) {
+          alert("user not found");
+        }
+        if (error.code === AuthErrorCodes.INVALID_PASSWORD) {
+          alert("wrong password");
+        }
+      }
+    } finally {
+      actions.setSubmitting(false);
+    }
+  };
 
   return (
     <div className="login-wrapper">
@@ -28,35 +76,25 @@ const Login: React.FC = () => {
           <div className="login-fields">
             <h1 className="login-title">Log In NeoWallet</h1>
             <Formik
-              initialValues={{ email: "", password: "" }}
+              initialValues={initialState}
               validationSchema={validationSchema}
-              onSubmit={(value) => console.log(value)}
+              onSubmit={handleSubmit}
             >
-              {() => (
+              {({ isSubmitting }) => (
                 <Form>
                   <div className="login-inputs">
                     <div>
                       <Field type="email" name="email" placeholder=" EMAIL" />
-                      <ErrorMessage
-                        name="email"
-                        component="div"
-                        className="errorMessage"
-                      />
+                      <ErrorMessage name="email" component="div" className="errorMessage" />
                     </div>
                     <div>
-                      <Field
-                        type="password"
-                        name="password"
-                        placeholder=" PASSWORD"
-                      />
-                      <ErrorMessage
-                        name="password"
-                        component="div"
-                        className="errorMessage"
-                      />
+                      <Field type="password" name="password" placeholder=" PASSWORD" />
+                      <ErrorMessage name="password" component="div" className="errorMessage" />
                     </div>
 
-                    <button type="submit">LOGIN</button>
+                    <button type="submit" disabled={isSubmitting}>
+                      LOGIN
+                    </button>
                   </div>
                 </Form>
               )}
