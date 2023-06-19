@@ -106,6 +106,9 @@ const Chat = () => {
                     line: {
                       tension: 0.4,
                     },
+                    point: {
+                      radius: 0,
+                    },
                   },
                 }}
                 data={data}
