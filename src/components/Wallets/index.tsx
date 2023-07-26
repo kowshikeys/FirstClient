@@ -8,6 +8,7 @@ import { tokenStore } from "../../store/tokensStore";
 
 const Wallets: React.FC = () => {
   const tokens = tokenStore((t) => t.tokens);
+  const setOpenTokenListModal = tokenStore((t) => t.setOpenTokenListModal);
 
   return (
     <div className="wallet">
@@ -54,9 +55,14 @@ const Wallets: React.FC = () => {
             </div>
           ))}
       {tokens.length > 4 && (
-        <div className="wallet_card">
+        <div
+          className="wallet_card"
+          role="button"
+          onClick={() => setOpenTokenListModal()}
+          style={{ cursor: "pointer" }}
+        >
           <div style={{ display: "grid", placeItems: "center", height: "100%" }}>
-            <h2 style={{ color: "#fff" }}>+{tokens.length - 4}</h2>
+            <h2 style={{ color: "#fff" }}>+{tokens.length - 3}</h2>
           </div>
         </div>
       )}

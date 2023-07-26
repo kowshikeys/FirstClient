@@ -81,9 +81,88 @@
 
 .modal-content {
   max-width: 300px;
-  border-radius: 10px;
+  width: 100%;
+  border-radius: 5px;
   padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+
+  background-color: #121c39;
+
+  .add-token-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    input {
+      background-color: #1c2241;
+      padding: 8px;
+      outline: none;
+      border: none;
+      color: #fff;
+    }
+
+    button {
+      border-radius: 15px;
+      border: 2px solid #8c68cd;
+      padding: 5px 10px 5px 10px;
+      background: none;
+      color: white;
+      cursor: pointer;
+    }
+  }
+
+  .token-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 300px;
+    overflow-y: auto;
+
+    > div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #1c2241;
+      padding: 8px;
+
+      p {
+        color: #fff;
+
+        span {
+          color: #a796c6;
+        }
+      }
+    }
+  }
+
+  .close-btn {
+    margin-top: 50px;
+    color: #a796c6;
+    text-align: center;
+
+    span {
+      cursor: pointer;
+    }
+  }
+
+  .transaction-popup {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+
+    p {
+      text-transform: capitalize;
+    }
+
+    > span {
+      background-color: #1c2241;
+      border-radius: 50%;
+      font-size: 28px;
+      width: 36px;
+      height: 36px;
+      text-align: center;
+    }
+  }
 }

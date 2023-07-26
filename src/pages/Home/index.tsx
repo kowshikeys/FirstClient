@@ -15,7 +15,10 @@ import { tokenStore } from "../../store/tokensStore";
 const Home = () => {
   const [openAddWalletModal, setOpenAddWalletModal] = useState(false);
   const [tokenName, setTokenName] = useState("");
+  const tokens = tokenStore((t) => t.tokens);
   const setTokens = tokenStore((t) => t.setTokens);
+  const openTokenListModal = tokenStore((t) => t.openTokenListModal);
+  const setOpenTokenListModal = tokenStore((t) => t.setOpenTokenListModal);
 
   const handleAddToken = () => {
     setTokens({ name: tokenName, balance: 100 });
@@ -50,6 +53,7 @@ const Home = () => {
                       color: "#8C68CD",
                       fontSize: "13px",
                       fontWeight: "500",
+                      cursor: "pointer",
                     }}
                     className="add_wallet"
                     onClick={() => setOpenAddWalletModal(true)}
@@ -83,8 +87,31 @@ const Home = () => {
       </div>
       <Modal isOpen={openAddWalletModal} handleClose={() => setOpenAddWalletModal(false)}>
         <div className="modal-content">
-          <input value={tokenName} onChange={(e) => setTokenName(e.target.value)} />
-          <button onClick={() => handleAddToken()}>Add</button>
+          <div className="add-token-form">
+            <input
+              placeholder="Add Token..."
+              value={tokenName}
+              onChange={(e) => setTokenName(e.target.value)}
+            />
+            <button onClick={() => handleAddToken()}>Add</button>
+          </div>
+        </div>
+      </Modal>
+      <Modal isOpen={openTokenListModal} handleClose={() => setOpenTokenListModal()}>
+        <div className="modal-content">
+          <div className="token-list">
+            {tokens.map((token, index) => (
+              <div key={index.toString()}>
+                <p>{token.name}</p>
+                <p>
+                  <span>{token.balance}</span>
+                </p>
+              </div>
+            ))}
+          </div>
+          <div className="close-btn">
+            <span onClick={() => setOpenTokenListModal()}>close</span>
+          </div>
         </div>
       </Modal>
     </div>

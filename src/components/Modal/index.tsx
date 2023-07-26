@@ -10,13 +10,10 @@ const StyledModal = styled(motion.div)`
   left: 50%;
   transform: translate(-50%, -50%);
   background: var(--card-background);
-  border-radius: 20px;
-  max-width: 480px;
   width: 100%;
-
-  @media (max-width: 576px) {
-    max-width: 90%;
-  }
+  display: grid;
+  place-items: center;
+  border-radius: 20px;
 `;
 
 const modalVaraints = {

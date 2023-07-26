@@ -1,8 +1,12 @@
 import React from "react";
 import "../Overview/overview.scss";
 import Info from "../../assets/Icons/info.svg";
+import { tokenStore } from "../../store/tokensStore";
 
 const Overview: React.FC = () => {
+  const tokens = tokenStore((t) => t.tokens);
+  const setOpenTokenListModal = tokenStore((t) => t.setOpenTokenListModal);
+
   return (
     <div className="overview-wrapper">
       <div className="overview-text">
@@ -15,8 +19,8 @@ const Overview: React.FC = () => {
             <h1>2,435</h1>
             <p>Transactions</p>
           </div>
-          <div className="no-of-wallets">
-            <h1>5</h1>
+          <div className="no-of-wallets" onClick={() => setOpenTokenListModal()}>
+            <h1>{tokens.length}</h1>
             <p>Wallets</p>
           </div>
         </div>

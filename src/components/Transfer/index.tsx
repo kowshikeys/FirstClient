@@ -2,15 +2,24 @@ import React, { useState } from "react";
 import "./Transfer.scss";
 // import Arrow from "../../assets/Icons/arrows.png";
 import { tokenStore } from "../../store/tokensStore";
+import Modal from "../Modal";
 
 const Transfer: React.FC = () => {
   const tokens = tokenStore((t) => t.tokens);
   const updateTokenBalance = tokenStore((t) => t.updateTokenBalance);
+  const receiveTokenBalance = tokenStore((t) => t.receiveTokenBalance);
   const [selectedToken, setSelectedToken] = useState(tokens[0].name);
   const [amount, setAmount] = useState("");
+  const [openModal, setOpenModal] = useState<"send" | "received" | null>(null);
 
   const handleSendToken = () => {
     updateTokenBalance(selectedToken, Number(amount));
+    setOpenModal("send");
+  };
+
+  const handleReceiveToken = () => {
+    receiveTokenBalance(selectedToken, Number(amount));
+    setOpenModal("received");
   };
 
   return (
@@ -50,10 +59,21 @@ const Transfer: React.FC = () => {
           </h6>
         </div>
         <div className="receive">
-          <p>Receive?</p>
+          <button onClick={() => handleReceiveToken()}>Receive</button>
           <button onClick={() => handleSendToken()}>Send</button>
         </div>
       </div>
+      <Modal isOpen={!!openModal} handleClose={() => setOpenModal(null)}>
+        <div className="modal-content">
+          <div className="transaction-popup">
+            <span>i</span>
+            <p>{openModal} Successfully</p>
+          </div>
+          <div className="close-btn">
+            <span onClick={() => setOpenModal(null)}>close</span>
+          </div>
+        </div>
+      </Modal>
     </div>
   );
 };
