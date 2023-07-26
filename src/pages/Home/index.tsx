@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "./Home.scss";
 import Hero from "../../components/Hero/hero";
@@ -9,8 +9,20 @@ import MyWallet from "../../components/MyWallet/myWallet";
 import Transaction from "../../components/Transaction/transaction";
 import Transfer from "../../components/Transfer";
 import Wallets from "../../components/Wallets";
+import Modal from "../../components/Modal";
+import { tokenStore } from "../../store/tokensStore";
 
 const Home = () => {
+  const [openAddWalletModal, setOpenAddWalletModal] = useState(false);
+  const [tokenName, setTokenName] = useState("");
+  const setTokens = tokenStore((t) => t.setTokens);
+
+  const handleAddToken = () => {
+    setTokens({ name: tokenName, balance: 100 });
+    setTokenName("");
+    setOpenAddWalletModal(false);
+  };
+
   const renderHomeContent = (
     <div className="home_content">
       <Hero />
@@ -40,6 +52,7 @@ const Home = () => {
                       fontWeight: "500",
                     }}
                     className="add_wallet"
+                    onClick={() => setOpenAddWalletModal(true)}
                   >
                     Add Wallet
                   </button>
@@ -68,6 +81,12 @@ const Home = () => {
         <Header />
         {renderHomeContent}
       </div>
+      <Modal isOpen={openAddWalletModal} handleClose={() => setOpenAddWalletModal(false)}>
+        <div className="modal-content">
+          <input value={tokenName} onChange={(e) => setTokenName(e.target.value)} />
+          <button onClick={() => handleAddToken()}>Add</button>
+        </div>
+      </Modal>
     </div>
   );
 };

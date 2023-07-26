@@ -5,9 +5,14 @@ import Support from "../../assets/Icons/support.svg";
 import Plus from "../../assets/Icons/plus.svg";
 import User from "../../assets/Icons/user.svg";
 import { userStore } from "../../store/userStore";
+import { auth } from "../../utils/firebase";
 
 const Hero: React.FC = () => {
   const user = userStore((state) => state.user);
+
+  const handleLogout = () => {
+    auth.signOut();
+  };
 
   return (
     <div className="hero-wrapper">
@@ -31,6 +36,9 @@ const Hero: React.FC = () => {
         <div className="user">
           <p>{user?.displayName}</p>
           <div className="user-box">
+            <img src={User} alt="" />
+          </div>
+          <div className="user-box" onClick={() => handleLogout()}>
             <img src={User} alt="" />
           </div>
         </div>
