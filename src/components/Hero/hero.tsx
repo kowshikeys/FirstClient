@@ -4,6 +4,7 @@ import Search from "../../assets/Icons/search.svg";
 import Support from "../../assets/Icons/support.svg";
 import Plus from "../../assets/Icons/plus.svg";
 import User from "../../assets/Icons/user.svg";
+import Logout from "../../assets/Icons/logoutbtn.svg";
 import { userStore } from "../../store/userStore";
 import { auth } from "../../utils/firebase";
 
@@ -39,7 +40,7 @@ const Hero: React.FC = () => {
             <img src={User} alt="" />
           </div>
           <div className="user-box" onClick={() => handleLogout()}>
-            <img src={User} alt="" />
+            <img src={Logout} alt="" />
           </div>
         </div>
       </div>

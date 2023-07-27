@@ -21,7 +21,7 @@ const Overview: React.FC = () => {
           </div>
           <div className="no-of-wallets" onClick={() => setOpenTokenListModal()}>
             <h1>{tokens.length}</h1>
-            <p>Asserts</p>
+            <p>Assets</p>
           </div>
         </div>
         <div className="current-balance">

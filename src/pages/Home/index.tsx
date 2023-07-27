@@ -43,7 +43,7 @@ const Home = () => {
                       fontWeight: "500",
                     }}
                   >
-                    My Asserts
+                    My Assets
                   </p>
                   <button
                     style={{
@@ -58,7 +58,7 @@ const Home = () => {
                     className="add_wallet"
                     onClick={() => setOpenAddWalletModal(true)}
                   >
-                    Add Assert
+                    Add Asset
                   </button>
                 </div>
                 <Wallets />
@@ -89,7 +89,7 @@ const Home = () => {
         <div className="modal-content">
           <div className="add-token-form">
             <input
-              placeholder="Add Token..."
+              placeholder="Add Asset..."
               value={tokenName}
               onChange={(e) => setTokenName(e.target.value)}
             />
