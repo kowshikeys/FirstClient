@@ -43,7 +43,7 @@ const Home = () => {
                       fontWeight: "500",
                     }}
                   >
-                    My Wallets
+                    My Asserts
                   </p>
                   <button
                     style={{
@@ -58,7 +58,7 @@ const Home = () => {
                     className="add_wallet"
                     onClick={() => setOpenAddWalletModal(true)}
                   >
-                    Add Wallet
+                    Add Assert
                   </button>
                 </div>
                 <Wallets />
